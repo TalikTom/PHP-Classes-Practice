@@ -7,12 +7,14 @@ class Account
 
     public function deposit (float $amount): float
     {
-
+        $this->balance += $amount;
+        return $this->balance;
     }
 
     public function withdraw(float $amount): float
     {
-
+        $this->balance -= $amount;
+        return $this->balance;
     }
 
 }
@@ -35,7 +37,14 @@ $account->balance = 1000.00;
 ?>
 <?php require 'includes/header.php'; ?>
 <h1>Hello World</h1>
-<p><?= $account->balance ?></p>
+
+<p>Original ammount <?= $account->balance ?>kn</p>
+<!-- call a method to deposit 50 more to the balance property -->
+<p>Current ammount <?= $account->deposit(50) ?>kn</p>
+<!-- call a method to withdraw 100 from the balance property -->
+<p>Current ammount <?= $account->withdraw(100) ?>kn</p>
+
+
 <p><?= $customer->email; ?></p>
 
 <?php require 'includes/footer.php'; ?>
