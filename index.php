@@ -5,7 +5,7 @@ class Account
     public string $type;
     public float $balance;
 
-    public function __construct($number, $type, $balance)
+    public function __construct($number, $type, $balance = 0)
     {
         $this->number = $number;
         $this->type = $type;
@@ -34,7 +34,7 @@ class Customer
     public string $password;
 }
 $account = new Account(134251, 'Checking', 2000);
-$account2 = new Account(123451, 'Saving', 1000);
+$account2 = new Account(123451, 'Saving');
 $customer = new Customer();
 
 $customer->email = 'luka@gmail.com';
