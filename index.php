@@ -33,12 +33,12 @@ class Customer
     public string $email;
     public string $password;
 }
-$account = new Account(134251, 'Checking', 2000);
-$account2 = new Account(123451, 'Saving');
+$checking = new Account(134251, 'Checking', 2000);
+$savings = new Account(123451, 'Savings');
 $customer = new Customer();
 
 $customer->email = 'luka@gmail.com';
-$account->balance = 3000;
+
 
 
 
@@ -47,13 +47,37 @@ $account->balance = 3000;
 <?php require 'includes/header.php'; ?>
 <h1>Hello World</h1>
 
-<p>Original ammount <?= $account->balance ?>kn</p>
+<p>Original ammount <?= $checking->balance ?>kn</p>
 <!-- call a method to deposit 50 more to the balance property -->
-<p>Current ammount <?= $account->deposit(50) ?>kn</p>
+<p>Current ammount <?= $checking->deposit(50) ?>kn</p>
 <!-- call a method to withdraw 100 from the balance property -->
-<p>Current ammount <?= $account->withdraw(100) ?>kn</p>
-<p>Current ammount account2 <?= $account2->balance ?></p>
+<p>Current ammount <?= $checking->withdraw(100) ?>kn</p>
+<p>Current ammount savings <?= $savings->balance ?></p>
 
+<h2>Account balances</h2>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th><?= $checking->type ?></th>
+        <th><?= $savings->type ?></th>
+    </tr>
+    <tr>
+        <td><?= date("Y/m/d") ?></td>
+        <td><?= $checking->balance ?></td>
+        <td><?= $savings->balance ?></td>
+    </tr>
+    <tr>
+        <td><?= date("Y/m/d") ?></td>
+        <td><?= $checking->deposit(50) ?></td>
+        <td><?= $savings->withdraw(50) ?></td>
+    </tr>
+    <tr>
+        <td><?= date("Y/m/d") ?></td>
+        <td><?= $checking->withdraw(1000) ?></td>
+        <td><?= $savings->deposit(1000) ?></td>
+    </tr>
+</table>
 
 <p><?= $customer->email; ?></p>
 
