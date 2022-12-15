@@ -35,6 +35,7 @@ class Customer
 }
 $checking = new Account(134251, 'Checking', 2000);
 $savings = new Account(123451, 'Savings');
+$highYield = new Account(123123, 'High Yield', 5000);
 $customer = new Customer();
 
 $customer->email = 'luka@gmail.com';
@@ -61,21 +62,25 @@ $customer->email = 'luka@gmail.com';
         <th>Date</th>
         <th><?= $checking->type ?></th>
         <th><?= $savings->type ?></th>
+        <th><?= $highYield->type ?></th>
     </tr>
     <tr>
         <td><?= date("Y/m/d") ?></td>
         <td><?= $checking->balance ?></td>
         <td><?= $savings->balance ?></td>
+        <td><?= $highYield->balance ?></td>
     </tr>
     <tr>
         <td><?= date("Y/m/d") ?></td>
         <td><?= $checking->deposit(50) ?></td>
         <td><?= $savings->withdraw(50) ?></td>
+        <td><?= $highYield->deposit(1000) ?></td>
     </tr>
     <tr>
         <td><?= date("Y/m/d") ?></td>
         <td><?= $checking->withdraw(1000) ?></td>
         <td><?= $savings->deposit(1000) ?></td>
+        <td><?= $highYield->deposit(1000) ?></td>
     </tr>
 </table>
 
