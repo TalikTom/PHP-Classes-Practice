@@ -5,6 +5,13 @@ class Account
     public string $type;
     public float $balance;
 
+    public function __construct($number, $type, $balance)
+    {
+        $this->number = $number;
+        $this->type = $type;
+        $this->balance = $balance;
+    }
+
     public function deposit (float $amount): float
     {
         $this->balance += $amount;
@@ -26,12 +33,14 @@ class Customer
     public string $email;
     public string $password;
 }
-$account = new Account();
+$account = new Account(134251, 'Checking', 2000);
+$account2 = new Account(123451, 'Saving', 1000);
 $customer = new Customer();
 
 $customer->email = 'luka@gmail.com';
+$account->balance = 3000;
 
-$account->balance = 1000.00;
+
 
 
 ?>
@@ -43,6 +52,7 @@ $account->balance = 1000.00;
 <p>Current ammount <?= $account->deposit(50) ?>kn</p>
 <!-- call a method to withdraw 100 from the balance property -->
 <p>Current ammount <?= $account->withdraw(100) ?>kn</p>
+<p>Current ammount account2 <?= $account2->balance ?></p>
 
 
 <p><?= $customer->email; ?></p>
