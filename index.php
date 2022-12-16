@@ -31,12 +31,59 @@ class Account
 
 }
 
+//created account2 for the purpose of storing object in a property of an object
+class Account2
+{
+    public AccountNumber $numberOiO;
+    public string $type;
+    protected float $balance;
+
+    public function __construct(AccountNumber $numberOiO, $type, $balance = 0)
+    {
+        $this->numberOiO = $numberOiO;
+        $this->type = $type;
+        $this->balance = $balance;
+    }
+
+    public function deposit (float $amount): float
+    {
+        $this->balance += $amount;
+        return $this->balance;
+    }
+
+    public function withdraw(float $amount): float
+    {
+        $this->balance -= $amount;
+        return $this->balance;
+    }
+
+    public function getBalance(): float
+    {
+        return $this->balance;
+    }
+
+}
+
 class Customer 
 {
     public string $firstname;
     public string $lastname;
     public string $email;
     public string $password;
+}
+
+
+class AccountNumber 
+{
+    public int $accountNumber;
+    public int $routingNumber;
+
+    public function __construct(int $accountNumber,
+    int $routingNumber)
+    {
+        $this->accountNumber = $accountNumber;
+        $this->routingNumber = $routingNumber;
+    }
 }
 
 
@@ -55,6 +102,9 @@ $numbers =
 
 $account = new Account($numbers, 'Savings', 10);
 
+$numbersOiO = new AccountNumber(1122334455, 9988776655);
+$accountOiO = new Account2($numbersOiO, 'Checking')
+
 
 
 ?>
@@ -69,6 +119,8 @@ $account = new Account($numbers, 'Savings', 10);
 <p>Current ammount savings <?= $savings->getBalance() ?></p>
 <p>This is where i stored an array into property of an object: <?= $account->number['account_number'] ?></p>
 <p>This is where i stored an array into property of an object: <?= $account->number['routing_number'] ?></p>
+<p>This is where i stored an object into property of an object: <?= $accountOiO->numberOiO->accountNumber ?></p>
+<p>This is where i stored an object into property of an object: <?= $accountOiO->numberOiO->routingNumber ?></p>
 
 <h2>Account balances</h2>
 
