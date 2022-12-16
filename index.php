@@ -3,7 +3,7 @@ class Account
 {
     public int $number;
     public string $type;
-    public float $balance;
+    protected float $balance;
 
     public function __construct($number, $type, $balance = 0)
     {
@@ -21,6 +21,11 @@ class Account
     public function withdraw(float $amount): float
     {
         $this->balance -= $amount;
+        return $this->balance;
+    }
+
+    public function getBalance(): float
+    {
         return $this->balance;
     }
 
@@ -48,12 +53,12 @@ $customer->email = 'luka@gmail.com';
 <?php require 'includes/header.php'; ?>
 <h1>Hello World</h1>
 
-<p>Original ammount <?= $checking->balance ?>kn</p>
+<p>Original ammount <?= $checking->getBalance() ?>kn</p>
 <!-- call a method to deposit 50 more to the balance property -->
 <p>Current ammount <?= $checking->deposit(50) ?>kn</p>
 <!-- call a method to withdraw 100 from the balance property -->
 <p>Current ammount <?= $checking->withdraw(100) ?>kn</p>
-<p>Current ammount savings <?= $savings->balance ?></p>
+<p>Current ammount savings <?= $savings->getBalance() ?></p>
 
 <h2>Account balances</h2>
 
@@ -66,9 +71,9 @@ $customer->email = 'luka@gmail.com';
     </tr>
     <tr>
         <td><?= date("Y/m/d") ?></td>
-        <td><?= $checking->balance ?></td>
-        <td><?= $savings->balance ?></td>
-        <td><?= $highYield->balance ?></td>
+        <td><?= $checking->getBalance() ?></td>
+        <td><?= $savings->getBalance() ?></td>
+        <td><?= $highYield->getBalance() ?></td>
     </tr>
     <tr>
         <td><?= date("Y/m/d") ?></td>
