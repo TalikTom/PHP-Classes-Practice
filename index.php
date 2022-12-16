@@ -1,7 +1,7 @@
 <?php
 class Account
 {
-    public int $number;
+    public  $number;
     public string $type;
     protected float $balance;
 
@@ -38,6 +38,8 @@ class Customer
     public string $email;
     public string $password;
 }
+
+
 $checking = new Account(134251, 'Checking', 2000);
 $savings = new Account(123451, 'Savings');
 $highYield = new Account(123123, 'High Yield', 5000);
@@ -45,7 +47,13 @@ $customer = new Customer();
 
 $customer->email = 'luka@gmail.com';
 
+$numbers =
+    [
+        'account_number' => 123456789,
+        'routing_number' => 987654321,
+    ];
 
+$account = new Account($numbers, 'Savings', 10);
 
 
 
@@ -59,6 +67,8 @@ $customer->email = 'luka@gmail.com';
 <!-- call a method to withdraw 100 from the balance property -->
 <p>Current ammount <?= $checking->withdraw(100) ?>kn</p>
 <p>Current ammount savings <?= $savings->getBalance() ?></p>
+<p>This is where i stored an array into property of an object: <?= $account->number['account_number'] ?></p>
+<p>This is where i stored an array into property of an object: <?= $account->number['routing_number'] ?></p>
 
 <h2>Account balances</h2>
 
