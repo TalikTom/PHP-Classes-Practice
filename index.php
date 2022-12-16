@@ -38,28 +38,10 @@ class Account2
     public string $type;
     protected float $balance;
 
-    public function __construct(AccountNumber $numberOiO, $type, $balance = 0)
+    public function __construct(AccountNumber $numberOiO)
     {
         $this->numberOiO = $numberOiO;
-        $this->type = $type;
-        $this->balance = $balance;
-    }
 
-    public function deposit (float $amount): float
-    {
-        $this->balance += $amount;
-        return $this->balance;
-    }
-
-    public function withdraw(float $amount): float
-    {
-        $this->balance -= $amount;
-        return $this->balance;
-    }
-
-    public function getBalance(): float
-    {
-        return $this->balance;
     }
 
 }
@@ -103,7 +85,7 @@ $numbers =
 $account = new Account($numbers, 'Savings', 10);
 
 $numbersOiO = new AccountNumber(1122334455, 9988776655);
-$accountOiO = new Account2($numbersOiO, 'Checking')
+$accountOiO = new Account2($numbersOiO)
 
 
 
